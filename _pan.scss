@@ -1,0 +1,580 @@
+/* Scss Document */
+
+
+//
+// Layout
+//
+
+#pan-bar {
+    background-color: $blue;
+    color: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    height: 55px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.wrap {
+    padding-top: 55px;
+    display: flex;
+    height: calc(100vh);
+}
+
+main {
+    flex: 1;
+    display: flex;
+}
+
+.sidebar {
+    width: 300px;
+    overflow-y: hidden;
+    &:hover {
+        overflow-y: auto;
+    }
+}
+
+.sidebar.filter-panel {
+    padding: 15px;
+}
+
+.canvas {
+    flex: 1;
+    overflow-y: hidden;
+    &:hover {
+        overflow-y: auto;
+    }
+}
+
+
+.page-header {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.page-body {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+//
+// Tabs
+//
+
+.nav-tabs {
+    background-color: $gray-lightest;
+    .nav-link {
+        color: #646464;
+        padding: 1em 1.3em;
+        cursor: pointer;
+        @include transition($btn-transition);
+        .fa {
+            margin-right: $icon-spacer;
+        }
+    }
+    .nav-link:hover {
+        background-color: $gray-lighter;
+        &.active {
+            background-color: #fff;
+        }
+    }
+}
+
+//
+// Tables
+//
+
+.table {
+    margin-bottom: 0px;
+    th, thead th {
+        text-transform: uppercase;
+        background-color: $table-head-bg;
+        color: $table-head-color;
+        font-size: .8rem;
+        padding-top: .4rem;
+        padding-bottom: .4rem;
+        font-family: "Lato", sans-serif;
+        border-top: 0px;
+        border-bottom: 1px solid $border-color-default;
+    }
+    thead.th-light th {
+        background-color: #fff;
+    } 
+    tr.row-unread td {
+        font-weight: 700;
+    }
+    tr.row-read td {
+        background-color: $gray-lightest;
+        color: $text-muted;
+    }
+    td.border-left, th.border-left {
+        border-left: 1px solid $border-color-default;
+    }
+    td.border-right, th.border-right {
+        border-right: 1px solid $border-color-default;
+    }
+}
+
+.table-sm {
+    font-size: .8rem;
+    th, thead th {
+        font-size: .7rem;
+        padding-top: .3rem;
+        padding-bottom: .3rem;
+    }
+}
+
+.table td.checkbox-col, .table th.checkbox-col {
+    width: 10px;
+}
+
+// When a table appears on a card, it's first column should align with the card header and footer
+.card .table td:first-of-type, .card .table th:first-of-type {
+    padding-left: $card-spacer-x;
+}
+
+//
+// Buttons
+//
+
+.btn {
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
+    &:hover {
+        background-color: #2a2b32;
+        border-color: #2a2b32;
+    }
+}
+
+.btn-secondary {
+    background-color: #cfcfcf;
+    border-color: #cfcfcf;
+    &:hover {
+        background-color: #a1a1a1;
+        border-color: #a1a1a1;
+        color: #fff;
+    }
+}
+
+.btn-outline {
+    background-color: transparent;
+    border-color: #a1a1a1;
+    &:hover {
+      background-color: #cfcfcf;  
+      border-color: #cfcfcf; 
+    }
+}
+
+.fa.show-on-hover, .btn.show-on-hover {
+    visibility: hidden;
+}
+
+tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-header:hover .fa.show-on-hover, .card-header:hover .btn.show-on-hover {
+    visibility: visible;
+}
+
+
+    
+//
+// Cards
+//
+
+.card {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .1);
+    margin-bottom: 1rem;
+    overflow: hidden; /* Meant to show the border radius even if the content spreads to 100%. But seems like it could cause problems. */
+}
+
+.card-collapsed {
+    .card-header {
+        border-bottom: 0px;
+    }
+    .card-block {
+        display: none;
+    }
+    .card-footer {
+        display: none;
+    }
+}
+
+//Tighter padding on footers
+.card-footer {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0px;
+    }
+    .card-controls {
+        margin-left: auto;
+        order: 2;
+        .fa {
+            margin-left: 8px;
+        }
+    }
+}
+
+.card-header-sm {
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    h1, h2, h3, h4, h5, h6 {
+        font-size: .9rem;
+        font-weight: 600;
+    }
+}
+
+.card-header-lightweight {
+    background-color: transparent;
+    padding-top: .7rem;
+    padding-bottom: 0px;
+    border-bottom: 0px;
+    h1, h2, h3, h4, h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #00bf87;
+        text-transform: uppercase;
+    }
+}
+
+.card-full-height {
+    margin-bottom: 0px;
+    height: 100%;
+    min-height: calc(100vh - 144px);
+}
+
+.card-footer-btn {
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    &:hover {
+        background-color: $blue;
+        color: #fff;
+    }
+    a {
+        color: #fff;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+//
+// Tooltips
+//
+
+.tooltip-inner {
+    border-radius: 2px;
+}
+
+
+//
+// Pretty Checkboxes 
+//
+
+/* From here, with some modifications: https://www.templatemonster.com/blog/style-checkboxes-radio-buttons-css/ */
+
+.pretty-checkbox input[type="checkbox"]{
+  display: none;
+}
+
+.pretty-checkbox {
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+.pretty-checkbox label {
+  position: relative;
+}
+
+/* Base styles for spans */
+.pretty-checkbox span::before,
+.pretty-checkbox span::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.pretty-checkbox span.checkbox::before {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  left: -30px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  transition: border-color .2s;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.pretty-checkbox span.checkbox:hover::before {
+  border-color: $green;
+}
+.pretty-checkbox span.checkbox::after {
+  content: '\f00c';
+  font-family: 'FontAwesome';
+  font-weight: normal;
+  left: -26px;
+  top: 1px;
+  color: transparent;
+  transition: color .2s;
+  font-size: 13px;
+}
+
+.pretty-checkbox input[type="checkbox"]:checked + label span.checkbox::before {
+    background-color: $green;
+    border-color: $green;
+}
+.pretty-checkbox input[type="checkbox"]:checked + label span.checkbox::after {
+  color: #fff;
+}
+
+// Smaller
+.pretty-checkbox-sm {
+    padding-left: 25px;
+}
+
+.pretty-checkbox-sm span.checkbox::before {
+    width: 16px;
+    height: 16px;
+    left: -25px;
+    border-width: 2px;
+}
+
+.pretty-checkbox-sm span.checkbox::after {
+  left: -22px;
+  top: 3px;
+  font-size: 11px;
+}
+
+// XS
+.pretty-checkbox-xs {
+    padding-left: 25px;
+}
+
+.pretty-checkbox-xs span.checkbox::before {
+    width: 13px;
+    height: 13px;
+    left: -25px;
+    border-width: 1px;
+    border-color: #999;
+}
+
+.pretty-checkbox-xs span.checkbox::after {
+  left: -22px;
+  top: 2px;
+  font-size: 9px;
+}
+
+//
+// Page Headers 
+//
+
+.page-header {
+    padding: 15px; // Maybe this should be pulling from a padding variable?
+    display: flex;
+    align-items: center;
+    h1 {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+        color: #333;
+        font-size: 1.7rem;
+        margin-bottom: 0px;
+    }
+    .page-header-utilities {
+        margin-left: auto;
+        order: 10;
+        align-self: flex-end;
+    }
+    .subhead {
+        color: $text-muted;
+        font-size: 1.2rem;
+        font-weight: 400;
+        display: block;
+        margin-top: .5rem;
+    }
+    .subhead-inline {
+        color: $text-muted;
+        font-size: 1.2rem;
+        display: inline-block;
+        margin-left: 12px;
+        padding-left: 12px;
+        border-left: 1px solid $border-color-default;
+        line-height: 1.3rem;
+    }
+    .supporting-info {
+        color: $text-muted;
+        font-size: .8rem;
+    }
+    .back-btn img {
+        opacity: .5;
+        width: 26px;
+        margin-top: 3px;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+//
+// Pagination
+//
+.pagination {
+    margin-bottom: 0px;
+}
+.pagination .page-item {
+    .page-link {
+        border-radius: 2px 2px 2px 2px;
+    }
+    &:first-child, &:last-child {
+        .page-link {
+            border-radius: 2px;
+        }
+    }
+}
+
+//
+// Filters
+//
+
+.filter-group {
+	padding: 15px 0px 15px 0px;
+	font-size: 13px;
+	border-bottom: 1px solid $border-color-default;
+	position: relative;
+	z-index: 100;
+    width: 100%;
+    &:last-of-type {
+        border-bottom: 0px;
+    }
+}
+
+.filter-name {
+	font-weight: 400;
+	margin-bottom: 4px;
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+	color: #555;
+	cursor: pointer;
+    position: relative;
+    .chevron {
+        margin-left: 4px;
+        color: #777;
+        font-size: 11px;
+        position: relative;
+        top: -2px;
+    }
+}
+
+.filter-group-closed  {
+    .filter-name {
+	   margin-bottom: 0px;
+    }
+    .chevron {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        webkit-transition: all .05s linear;
+        -moz-transition: all .05s linear;
+        -o-transition: all .05s linear;
+        transition: all .05s linear;        
+    }
+}
+
+.filter-row {
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    input[type='checkbox'] {
+        margin-right: 6px;
+        flex-shrink: 0;
+    }
+    label {
+        margin-bottom: 0px;
+    }
+    .count {
+        font-size: .75rem;
+        line-height: 1rem;
+        color: $text-muted;
+        order: 10;
+        margin-left: auto;
+        width: 35px;
+        text-align: right;
+    }
+    &.nowrap {
+        label {
+
+            width: calc(100% - 60px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .icon-col {
+        width: 20px;
+        text-align: center;
+        margin-right: 5px;
+        flex-shrink: 0;
+    }
+    &:hover {
+        background-color: $gray-light;
+    }
+}
+
+
+
+
+
+//
+// Miscellaneous
+//
+
+.fa-btn {
+    cursor: pointer;
+    color: #777;
+    cursor: pointer;
+    @include transition($btn-transition);
+}
+
+.fa-btn:hover {
+    color: #333;
+}
+
+ul.inline-list {
+    list-style: none;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    margin-top: .5rem;
+    li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+}
+
+.dot {
+    background-color: $gray-light;
+    width: .8rem;
+    height: .8rem;
+    border-radius: 30px;
+    display: inline-block;
+    line-height: 1rem;
+}
+
+.dot-sm {
+    width: .6rem;
+    height: .6rem;
+}
