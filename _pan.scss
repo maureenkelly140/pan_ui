@@ -1,5 +1,26 @@
 /* Scss Document */
 
+body, html {
+    font-size: $font-size-base;
+}
+
+//
+// Type
+//
+
+h1, h2, h3, h4, h5 {
+    &.accent-color {
+        color: $green !important;
+    }
+}
+
+.sidebar-header {
+  text-transform: uppercase;
+  font-size: .9rem;
+  color: #888;
+  font-weight: 500;
+}
+
 
 //
 // Layout
@@ -38,6 +59,8 @@ main {
     padding: 15px;
 }
 
+
+
 .canvas {
     flex: 1;
     overflow-y: hidden;
@@ -56,6 +79,41 @@ main {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.sidebar-toggle {
+    position: fixed;
+    bottom: 4px;
+    left: 4px;
+    padding: 4px;
+    padding: 5px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    display: inline-block;
+    z-index: 1000000;
+    background-color: rgba(125, 125, 125, .8);
+    color: #fff; 
+    &:hover {
+        background-color: rgba(55,55,55,.8);
+    }
+    .sidebar-visible {
+        background-color: #dfdfdf;
+        color: #777;
+        .fa {
+            color: #777;
+        }
+        &:hover {
+            background-color: #ccc;
+            color: #333;
+            .fa {
+                color: #333;
+            }
+        }
+    }
+}
+
+
+
+
 
 //
 // Tabs
@@ -90,12 +148,13 @@ main {
         text-transform: uppercase;
         background-color: $table-head-bg;
         color: $table-head-color;
-        font-size: .8rem;
-        padding-top: .4rem;
-        padding-bottom: .4rem;
+        font-size: .82rem;
+        padding-top: .7rem;
+        padding-bottom: .7rem;
         font-family: "Lato", sans-serif;
+        font-weight: normal;
         border-top: 0px;
-        border-bottom: 1px solid $border-color-default;
+        border-bottom: 1px solid #ddd;
     }
     thead.th-light th {
         background-color: #fff;
@@ -184,11 +243,10 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 //
 
 .card {
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, .1);
+    border-radius: 0px;
+    border: 0px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, .2);
     margin-bottom: 1rem;
-    overflow: hidden; /* Meant to show the border radius even if the content spreads to 100%. But seems like it could cause problems. */
 }
 
 .card-collapsed {
@@ -228,21 +286,22 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     padding-top: .7rem;
     padding-bottom: .7rem;
     h1, h2, h3, h4, h5, h6 {
-        font-size: .9rem;
-        font-weight: 600;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #555;
     }
 }
 
 .card-header-lightweight {
     background-color: transparent;
-    padding-top: .7rem;
+    padding: 1.25rem 1.25rem 0 1.25rem;
     padding-bottom: 0px;
     border-bottom: 0px;
     h1, h2, h3, h4, h5 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #00bf87;
+        font-weight: 400;
+        color: #888;
         text-transform: uppercase;
+        font-size: 1.1rem;
     }
 }
 
@@ -448,64 +507,80 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 // Filters
 //
 
-.filter-group {
-	padding: 15px 0px 15px 0px;
-	font-size: 13px;
-	border-bottom: 1px solid $border-color-default;
-	position: relative;
-	z-index: 100;
-    width: 100%;
-    &:last-of-type {
-        border-bottom: 0px;
-    }
-}
-
-.filter-name {
-	font-weight: 400;
-	margin-bottom: 4px;
-	font-size: 1.1rem;
-	margin-bottom: 10px;
-	color: #555;
-	cursor: pointer;
-    position: relative;
-    .chevron {
-        margin-left: 4px;
-        color: #777;
-        font-size: 11px;
-        position: relative;
-        top: -2px;
-    }
-}
-
-.filter-group-closed  {
-    .filter-name {
-	   margin-bottom: 0px;
-    }
-    .chevron {
-        -webkit-transform: rotate(-90deg);
-        -moz-transform: rotate(-90deg);
-        -o-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-        transform: rotate(-90deg);
-        webkit-transition: all .05s linear;
-        -moz-transition: all .05s linear;
-        -o-transition: all .05s linear;
-        transition: all .05s linear;        
-    }
-}
 
 .filter-row {
-    padding: 3px;
     display: flex;
+    padding: 2px 4px;
     align-items: center;
-    width: 100%;
-    input[type='checkbox'] {
-        margin-right: 6px;
+    &:hover {
+        cursor: pointer;
+        background-color: #e4e4e4;  
+    }
+    .filter-check-col {
+        width: 16px;
+        margin-right: 5px;  
+        display: flex; 
+        align-items: center;
+        flex-grow: 0;
         flex-shrink: 0;
     }
-    label {
-        margin-bottom: 0px;
+    .filter-icon-col {
+        width: 16px;
+        text-align: center;
+        margin-right: 6px;
+        flex-grow: 0;
+        flex-shrink: 0;
     }
+    .filter-label-col {
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+    .filter-count-col {
+        text-align: right;
+        align-self: flex-end;
+        margin-left: 10px;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+}
+
+
+
+.clear-all {
+    align-self: flex-end;
+    font-size: .8rem;
+    color: #999;
+    text-transform: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-left: auto;
+    order: 3;
+    cursor: pointer;
+}
+
+.filter-badge {
+    background-color: #d9d9d9;
+    color: #444;
+    margin-left: 0px !important;
+    margin-right: 3px;
+    font-weight: 400;
+    padding: .25rem .35rem;
+    border-radius: 2px;
+}
+
+.filter-badge:after {
+    content: "\f00d";
+    margin-left: 6px;
+    color: #888;
+    font-family: "fontAwesome";
+    cursor: pointer;
+}
+
+
+
+
+.filter-row {
+    
     .count {
         font-size: .75rem;
         line-height: 1rem;
@@ -537,6 +612,56 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 
 
 
+//
+// Expandable Sections
+//
+
+.expandable-section {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    .expandable-header {
+        margin-bottom: 10px;
+        cursor: pointer;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        line-height: 19px;
+        &:after {
+            content: "\f078";
+            font-family: 'FontAwesome';
+            margin-left: .4rem;
+            font-size: .7rem;
+            margin-top: -1px;
+            display: inline-block;
+            color: #999;
+            webkit-transition: all .05s linear;
+            -moz-transition: all .05s linear;
+            -o-transition: all .05s linear;
+            transition: all .05s linear;        
+            transition: all .05s linear; 
+        }
+    }
+    .expandable-body {   
+    }
+}
+
+.expandable-section.closed  {
+    .expandable-body {
+      display: none;
+    }
+    .expandable-header {
+        margin-bottom: 0px;
+    }
+    .expandable-header:after {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+               
+    }
+}
+
 
 
 //
@@ -567,9 +692,9 @@ ul.inline-list {
 
 .dot {
     background-color: $gray-light;
-    width: .8rem;
-    height: .8rem;
-    border-radius: 30px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
     display: inline-block;
     line-height: 1rem;
 }
@@ -577,4 +702,19 @@ ul.inline-list {
 .dot-sm {
     width: .6rem;
     height: .6rem;
+}
+
+.border-bottom {
+    border-bottom: 1px solid $border-color-default;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.ellipsize {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block; 
 }
