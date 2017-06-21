@@ -3,8 +3,11 @@
 // Copy variables from `_variables.scss` to this file to override default values
 // without modifying source files.
 
+
+
 // COLORS
 $blue:                      #0188c7;
+$blue:                      #0e9ac8;
 $green:                     #3db39e;
 $green:                     #3f9b6f;
 $red:                       #d9534f;
@@ -28,7 +31,7 @@ $border-color-default:      #dadada;
 $border-color-light:        rgba(0, 0, 0, 0.05);
 
 // Body
-$body-bg:                   #dfdfdf;
+$body-bg:                   #efefef;
 $body-color:                #333;
 
 $text-muted:                #999;
@@ -67,13 +70,22 @@ $table-border-color:            $border-color-light;
 
 
 // Buttons
-$btn-border-radius:           2px;
+$btn-border-radius:           3px;
+$btn-padding-x:               1.4rem;
+$btn-padding-y:               .7rem;
 $btn-success-bg:              $brand-success;
 $btn-success-border:          $brand-success;
 $btn-danger-bg:               $brand-danger;
 $btn-danger-border:           $brand-danger;
 $btn-warning-bg:              $brand-warning;
 $btn-warning-border:          $brand-warning;
+
+
+// Dropdowns
+$dropdown-item-padding-x:     .9rem;
+$dropdown-link-active-bg:     #d8e8e8;
+$dropdown-link-active-color:  inherit;
+
 
 // Navs
 
@@ -105,12 +117,23 @@ $pagination-active-border:             $brand-primary;
 
 
 // Cards
-$card-spacer-x:            1.2rem;
-$card-spacer-y:            1rem;
-$card-border-width:        1px;
-$card-border-radius:       0px;
-$card-cap-bg:              $gray-lighter;
+$card-spacer-x:                         1.2rem;
+$card-spacer-y:                         1rem;
+$card-border-width:                     1px;
+$card-border-radius:                    0px;
+$card-cap-bg:                           $gray-lighter;
 
+// Badges
+$badge-font-size:                       80%;
+
+// Modals
+$modal-backdrop-bg:                     #ccc;
+$modal-backdrop-opacity:                .9;
+$modal-content-border-width:            0px;
+$modal-title-line-height:               $line-height-base;
+$modal-header-border-width:             0px;
+$modal-footer-border-width:             0px;
+$modal-lg:                              1000px;
 
 // Icons 
 
