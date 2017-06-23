@@ -1,0 +1,84 @@
+/* Magnifier-specific Styles */
+/* Scss Document */
+
+
+
+
+//
+// GLOBAL MAGNIFIER STYLES
+//
+
+.magnifier-status, .fa.magnifier-status {
+    font-size: 1.4rem;
+    &.magnifier-status-sm {
+        font-size: 1.1rem;
+    }
+    &.magnifier-status-confirmed {
+        color: $red;
+    }
+    &.magnifier-status-suspicious {
+        color: $yellow;
+    }
+    &.magnifier-status-unverified {
+        color: #888;
+    }
+}
+
+
+
+
+
+
+//
+// ASSETS PAGE
+//
+
+#subhead-users-hosts {
+    border-left: 0px;
+    font-size: 14px;
+    .fa {
+        font-size: 16px;
+        margin-right: .3rem;
+    }
+}
+
+#alerts-list {
+    td.link-col, th.link-col  {
+        padding: 0px;
+        width: 1px;
+        position: relative;
+    }
+    .connected-row {
+        td {
+            border-top: 0px;
+        }
+        .link-col::after {
+            content: "";
+            position: absolute;
+            bottom: 16px;
+            left: 5px;
+            display: inline-block;
+            width: 6px;
+            height: 50px;
+            border: 1px solid $border-color-default;
+            border-right: 0px;
+        }
+    }
+    
+}
+
+
+
+.alert-list div {
+    margin-bottom: 4px;
+    &:last-of-type {
+        margin-bottom: 0px;
+    }
+}
+
+.alert-count {
+    // Make the hover target a little bigger
+    padding-left: 7px;
+    padding-right: 7px;
+    
+}
