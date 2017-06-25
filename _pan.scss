@@ -15,10 +15,6 @@ h1, h2, h3, h4, h5 {
     }
 }
 
-
-
-
-
 //
 // Layout
 //
@@ -62,8 +58,10 @@ h1, h2, h3, h4, h5 {
         margin-right: 30px;
         display: flex;
         align-items: center;
+        background: url("../../../../images/logo-pan-bg-20.png") no-repeat;
+        background-size: 60px;
+        background-position: 8px 5px;
         &:hover {
-            
             cursor: pointer;
             .nav-dropdown-icon {
                 color: #fff;
@@ -77,13 +75,8 @@ h1, h2, h3, h4, h5 {
             z-index: 1;
             opacity: .2;
         }
-        #app-name {
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: 800;
-            font-family: 'Lato', sans-serif;
-            font-size: 1.4rem;
-            margin-right: 1rem;
+        .app-name {
+            margin-right: 9px;
         }
         .nav-dropdown-icon {
             font-size: 13px;
@@ -202,7 +195,9 @@ h1, h2, h3, h4, h5 {
     }      
 }
 
-
+.app-name {
+    height: 18px;
+}
 
 // Nav Menu Slider
 
@@ -211,16 +206,9 @@ h1, h2, h3, h4, h5 {
     .nav-slider-header {
         height: 55px;
         display: flex;
+        align-items: center;
         border-bottom: 1px solid #ccc;
         padding: 0px 15px;
-        .app-name {
-            color: #444;
-            text-transform: uppercase;
-            font-weight: 800;
-            font-family: 'Lato', sans-serif;
-            font-size: 1.4rem;
-            line-height: 55px;   
-        }
     }
     #nav-slider-menu {
         .list-item {
@@ -286,18 +274,41 @@ h1, h2, h3, h4, h5 {
 main {
     flex: 1;
     display: flex;
-}
-
-.sidebar {
-    width: 300px;
     overflow-y: hidden;
     &:hover {
         overflow-y: auto;
     }
 }
 
-.sidebar.filter-panel {
-    padding: 15px;
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    overflow-y: hidden;
+    &:hover {
+        overflow-y: auto;
+    }
+    &.filter-panel {
+        padding: 15px;
+    }
+    .sidebar-header-block {
+        padding: 15px;
+        border-bottom: 1px solid $border-color-default;
+        h1, h2, h3, h4, h5 {
+            margin-bottom: 0px;
+        }
+    }
+    .sidebar-block {
+        padding: 15px;
+        + .sidebar-block {
+            border-top: 1px solid $border-color-default;
+        }
+    }
+}
+
+.master-detail .sidebar {
+    background-color: #fff;
+    border-right: 1px solid #dadada;
+    
 }
 
 
@@ -310,7 +321,6 @@ main {
     }
 }
 
-
 .page-header {
     padding-left: 15px;
     padding-right: 15px;
@@ -321,37 +331,47 @@ main {
     padding-right: 15px;
 }
 
+.sidebar.collapsible-sidebar {
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.collapsible-sidebar.collapsed {
+     margin-left: -300px;
+}
+
+
 .sidebar-toggle {
     position: fixed;
     bottom: 4px;
     left: 4px;
-    padding: 4px 8px;
-    font-size: .9rem;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    padding-top: 2px;
+    border-radius: 3px;
     cursor: pointer;
     display: inline-block;
-    z-index: 1000000;
-    background-color: transparent;
+    z-index: 1041;
     background-color: rgba(125, 125, 125, .5);
-    color: #fff; 
-
-    
+    .fa {
+        color: #fff;
+        font-size: .8rem;
+    }
     &:hover {
         background-color: rgba(55,55,55,.8);
-        color: #fff;
-    }
-    .sidebar-visible {
-        background-color: #dfdfdf;
-        color: #777;
         .fa {
-            color: #777;
+            color: #fff;
         }
-        &:hover {
-            background-color: #ccc;
-            color: #333;
-            .fa {
-                color: #333;
-            }
-        }
+    }
+    .fa-chevron-left {
+        margin-left: -1px;
+    }
+    .fa-chevron-right {
+        margin-left: 1px;
     }
 }
 
@@ -413,17 +433,27 @@ main {
         background-color: #fff;
     } 
     tr.row-unread td {
+        background-color: #fff;
         font-weight: 700;
     }
     tr.row-read td {
         background-color: $gray-lightest;
         color: $text-muted;
     }
+    tr.active td {
+        background-color: $bg-highlight;
+    }
     td.border-left, th.border-left {
         border-left: 1px solid $border-color-default;
     }
     td.border-right, th.border-right {
         border-right: 1px solid $border-color-default;
+    }
+    th.col-xs, td.col-xs {
+        width: 10px;
+    }
+    &.table-nowrap td {
+        white-space: nowrap;
     }
 }
 
@@ -445,12 +475,164 @@ main {
     padding-left: $card-spacer-x;
 }
 
+
+//
+// Flex Table
+//
+
+// A table-like list, implemented with Flex. Not sure how to name this. If we use a plug-in, maybe we should leverage their classes. Currently using for the list on the Host Detail screen in Magnifier.
+
+
+.flex-table {
+    .table-row, .table-head-row {
+        padding: 10px 15px;
+        border-bottom: 1px solid $table-border-color;
+        display: flex;
+        justify-content: flex-start;
+        background-color: #fff;
+        &.active {
+            background-color: $bg-highlight;
+        }
+        .toggle-col {
+            width: 20px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        .check-col {
+            width: 25px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        .content-col {
+            flex-grow: 1;
+        }
+        .controls-col {
+            margin-left: auto;
+        }
+        &.nowrap {
+            align-items: center;
+            .content-col {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block; 
+            }
+        }
+        &.row-expanded {
+            border: 3px solid red;
+        }
+    }
+    .table-head-row {
+        text-transform: uppercase;
+        background-color: $table-head-bg;
+        color: $table-head-color;
+        font-size: .82rem;
+        padding-top: .7rem;
+        padding-bottom: .7rem;
+        font-family: "Lato", sans-serif;
+        font-weight: normal;
+        border-top: 0px;
+        border-bottom: 1px solid #ddd; 
+    }
+    
+    // Hierarchical flex table. Not sure my markup here is as solid as it could be.
+    .level-2 > .table-row {
+        padding-left: calc(#{$list-indent} * 2)
+    }
+    .level-3 > .table-row {
+        padding-left: calc(#{$list-indent} * 3);
+    }
+    .level-4 > .table-row {
+        padding-left: calc(#{$list-indent} * 4);
+    }
+    .level-5 > .table-row {
+        padding-left: calc(#{$list-indent} * 5);
+    }
+    .level-6 > .table-row {
+        padding-left: calc(#{$list-indent} * 6);
+    }
+    
+}
+
+
+
+
+.toggle-icon {
+    cursor: pointer;
+    &::after {
+        content: "\f0fe";
+        content: "\f054";
+        font-family: 'FontAwesome';
+        display: inline-block;
+        
+        color: #999;
+        font-size: .8rem;
+        
+        webkit-transition: all .1s linear;
+        -moz-transition: all .1s linear;
+        -o-transition: all .1s linear;
+        transition: all .1s linear;        
+        transition: all .1s linear; 
+    }
+}
+.expanded .toggle-icon {
+    &::after {
+        content: "\f146";
+        content: "\f054";
+        
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        
+        
+        
+    }
+}
+
+
+//
+// Lists
+//
+
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+        padding-left: 26px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        text-indent: 0px;
+        position: relative;
+    }
+    li::before {
+        content: "\f111";
+        color: $blue;
+        font-family: FontAwesome;
+        font-size: 8px;
+        position: absolute;
+        top: 8px;
+        left: 10px;
+    }
+    &.sub-bullets li::before {
+        content: "\f068";
+            color: #ccc;
+            font-size: 10px;
+    }
+}
+
 //
 // Buttons
 //
 
 .btn {
     cursor: pointer;
+}
+
+.btn .fa {
+    @include transition($btn-transition);
 }
 
 .btn-primary {
@@ -469,6 +651,9 @@ main {
         background-color: #a1a1a1;
         border-color: #a1a1a1;
         color: #fff;
+        .fa {
+            color: #fff;
+        }
     }
 }
 
@@ -487,6 +672,10 @@ main {
 
 tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-header:hover .fa.show-on-hover, .card-header:hover .btn.show-on-hover {
     visibility: visible;
+}
+
+.btn .fa {
+    vertical-align: middle;
 }
 
 //
@@ -643,7 +832,72 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     border-radius: 2px;
 }
 
+.tooltip.tooltip-red {
+    .tooltip-inner {
+        background-color: $red;
+    }
+    &.bs-tether-element-attached-top .tooltip-inner::before, &.tooltip-bottom .tooltip-inner::before {
+        border-bottom-color: $red;    
+    }
+    &.bs-tether-element-attached-right .tooltip-inner::before, &.tooltip-left .tooltip-inner::before {
+        border-left-color: $red;    
+    }
+}
 
+.tooltip.tooltip-yellow {
+    .tooltip-inner {
+        background-color: $yellow;
+    }
+    &.bs-tether-element-attached-top .tooltip-inner::before, &.tooltip-bottom .tooltip-inner::before {
+        border-bottom-color: $yellow;    
+    }
+    &.bs-tether-element-attached-right .tooltip-inner::before, &.tooltip-left .tooltip-inner::before {
+        border-left-color: $yellow;    
+    }
+}
+
+.tooltip.tooltip-gray {
+    .tooltip-inner {
+        background-color: #888;
+    }
+    &.bs-tether-element-attached-top .tooltip-inner::before, &.tooltip-bottom .tooltip-inner::before {
+        border-bottom-color: #888;    
+    }
+    &.bs-tether-element-attached-right .tooltip-inner::before, &.tooltip-left .tooltip-inner::before {
+        border-left-color: #888;    
+    }
+}
+
+
+//
+// Popovers
+//
+
+.popover {
+    box-shadow: 0px 0px 4px rgba(0,0,0,.1);
+}
+.popover-content {
+    padding: .5rem;
+}
+
+.popover::after {
+    border-width: 6px;
+}
+
+.popover::before {
+    border-width: 7px;
+}
+
+.popover.bs-tether-element-attached-left::before, .popover.popover-right::before {
+    left: -7px;
+    margin-top: -7px;
+}
+
+.popover.bs-tether-element-attached-left::after, .popover.popover-right::after {
+    left: -3px;
+    margin-left: -3px;
+    margin-top: -6px;
+}
 
 //
 // Page Headers 
@@ -732,7 +986,7 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     }
 }
 
-.filter-header, .sidebar-header {
+.filter-header, .sidebar-header, h1.sidebar-header, h2.sidebar-header, h3.sidebar-header, h4.sidebar-header, h5.sidebar-header {
     display: flex; 
     text-transform: uppercase;
     font-size: .9rem;
@@ -854,6 +1108,13 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 }
 
 
+//
+// Forms 
+//
+
+.form-group:last-of-type {
+    margin-bottom: 0px;
+}
 
 //
 // Modals 
@@ -941,15 +1202,40 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     }
     .btn-row {
         padding: 0px 1.2rem 1rem 1.2rem;
+        
         .btn {
             padding: 4px 8px;
             border-radius: 2px;
+            font-size: .9rem;
         }
     }
     .form-group label {
         font-weight: bold;
     }
 }
+
+
+//
+// Icons
+//
+
+.fa {
+    color: #999;
+    font-size: 16px;
+    &.fa-dark {
+        color: #777;
+    }
+    &.fa-lg {
+        font-size: 20px;
+    }
+    &.active {
+        color: $blue;
+    }
+}
+
+
+
+
 
 
 //
@@ -1113,14 +1399,14 @@ ul.inline-list {
 }
 
 //
-// App switcher menu -- 
+// App switcher menu
 //
 
-#pan-menu-dropdown {
+#app-switcher-menu {
     box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.4);
     min-width: 400px;
     padding-bottom: 0px;
-    #pan-menu-header {
+    #app-switcher-header {
         text-transform: uppercase;
         color: #555;
         font-size: .9rem;
@@ -1156,11 +1442,6 @@ ul.inline-list {
             font-weight: 900;
             font-size: 20px;
             padding-top: 6px;
-        }
-        a.app-name {
-            font-size: .9rem;
-            color: #444;
-            font-weight: 600;
         }
         &:hover {
             background-color: #eaeaea;
