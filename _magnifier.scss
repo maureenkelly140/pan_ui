@@ -82,3 +82,16 @@
     padding-right: 7px;
     
 }
+
+
+
+//
+// HOST DETAIL PAGE
+//
+
+#list-panel {
+    width: 370px;
+    &.collapsed {
+        margin-left: -370px;
+    }
+}
