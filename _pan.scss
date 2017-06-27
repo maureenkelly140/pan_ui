@@ -494,7 +494,7 @@ main {
             background-color: $bg-highlight;
         }
         .toggle-col {
-            width: 20px;
+            width: 24px;
             flex-grow: 0;
             flex-shrink: 0;
         }
@@ -696,7 +696,23 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     .badge {
         margin-left: 20px;
     }
+}
 
+.dropdown-toggle::after {
+    border-top-color: $body-color;
+}
+
+.dropdown-header {
+    color: $blue;
+    font-weight: 600;
+}
+
+.dropdown.show .fa-btn {
+    color: $blue;
+}
+
+.dropdown.no-caret .dropdown-toggle:after {
+    display: none;
 }
 
     
@@ -839,8 +855,14 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     &.bs-tether-element-attached-top .tooltip-inner::before, &.tooltip-bottom .tooltip-inner::before {
         border-bottom-color: $red;    
     }
+    &.bs-tether-element-attached-bottom .tooltip-inner::before, &.tooltip-top .tooltip-inner::before {
+        border-top-color: $red;    
+    }
     &.bs-tether-element-attached-right .tooltip-inner::before, &.tooltip-left .tooltip-inner::before {
         border-left-color: $red;    
+    }
+    &.bs-tether-element-attached-left .tooltip-inner::before, &.tooltip-right .tooltip-inner::before {
+        border-right-color: $red;    
     }
 }
 
@@ -851,8 +873,14 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     &.bs-tether-element-attached-top .tooltip-inner::before, &.tooltip-bottom .tooltip-inner::before {
         border-bottom-color: $yellow;    
     }
+    &.bs-tether-element-attached-bottom .tooltip-inner::before, &.tooltip-top .tooltip-inner::before {
+        border-top-left-radius: $yellow;    
+    }
     &.bs-tether-element-attached-right .tooltip-inner::before, &.tooltip-left .tooltip-inner::before {
         border-left-color: $yellow;    
+    }
+    &.bs-tether-element-attached-left .tooltip-inner::before, &.tooltip-right .tooltip-inner::before {
+        border-right-color: $yellow;    
     }
 }
 
@@ -906,6 +934,7 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 .page-header {
     padding: 15px; // Maybe this should be pulling from a padding variable?
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     h1 {
         font-family: $font-family-sans-serif;
@@ -919,12 +948,21 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
         order: 10;
         align-self: flex-end;
     }
+    .page-header-icon {
+        font-size: 24px;
+        color: #666;
+        margin-right: 12px;
+    }
+    .media .page-header-icon {
+        margin-top: 3px;
+    }
     .subhead {
         color: $text-muted;
         font-size: 1.2rem;
         font-weight: 400;
         display: block;
         margin-top: .5rem;
+        flex-basis: 100%;
     }
     .subhead-inline {
         color: $text-muted;
@@ -936,8 +974,8 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
         line-height: 1.3rem;
     }
     .supporting-info {
-        color: $text-muted;
-        font-size: .8rem;
+        color: #888;
+        flex-basis: 100%;
     }
     .back-btn img {
         opacity: .5;
@@ -1016,66 +1054,53 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     }
 }
 
+.filter-body {
+    padding-bottom: 10px;
+}
+
 .filter-row {
     display: flex;
     padding: 2px 4px;
-    align-items: flex-start;
-    &.nowrap {
-        align-items: center;
-        .filter-check-col {
-            padding-top: 1px;
-        }
-        .filter-label-col {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: inline-block; 
-        }
-    }
+    margin: 0;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
     &:hover {
-        cursor: pointer;
-        background-color: $gray-light;  
+        background-color: $hover-bg-color-default;  
     }
-    &:last-of-type {
-        margin-bottom: 1rem;
+    &.wrap-label {
+        align-items: flex-start;
+        .main-col {
+            text-overflow: none;
+            white-space: normal;
+            overflow: visible;   
+        }
     }
-    .filter-check-col {
-        width: 16px;
-        margin-right: 5px;  
-        display: flex; 
-        align-items: center;
-        flex-grow: 0;
-        flex-shrink: 0;
-        padding-top: 3px;
+    .filter-col {
+        display: inline-block;
+        margin-right: .8rem;
     }
-    .filter-icon-col {
+    .main-col {
+        flex-grow: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;   
+    }
+    .icon-col {
         width: 16px;
         text-align: center;
-        margin-right: 6px;
-        flex-grow: 0;
-        flex-shrink: 0;
     }
-    .filter-label-col {
-        flex-grow: 1;
-        flex-shrink: 1;
-    }
-    .filter-count-col {
-        flex-grow: 0;
-        flex-shrink: 0;  
-        order: 4;          
-        font-size: .75rem;
-        line-height: 1.3rem;
+    .count {
+        margin: 0;
         text-align: right;
-        padding-left: 1rem;
-        color: $text-muted;      
-    }
+        color: $text-muted;
+        font-size: .75rem;
+        line-height: $line-height-base;
+    }    
+   
 }
 
-.applied-filters-area {
-    .filter-group {
-        border-bottom: 1px solid $border-color-default;
-        margin-bottom: 1rem;
-    }   
+#applied-filters {
     .clear-all {
         float: right;
         line-height: 19px;
@@ -1086,23 +1111,23 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
         font-weight: 400;
         cursor: pointer;
     }
-    .filter-badges {
-        padding-bottom: 1rem;
-        .filter-badge {
-            background-color: #d9d9d9;
-            color: #444;
-            margin-left: 0px !important;
-            margin-right: 3px;
-            font-weight: 400;
-            padding: .25rem .35rem;
-            border-radius: 2px;
-            &:after {
-                content: "\f00d";
-                margin-left: 6px;
-                color: #888;
-                font-family: "fontAwesome";
-                cursor: pointer;
-            }
+    .filter-body:empty {
+        padding-bottom: 0px;
+    }
+    .filter-badge {
+        background-color: #d9d9d9;
+        color: #444;
+        margin-left: 0px !important;
+        margin-right: 3px;
+        font-weight: 400;
+        padding: .25rem .35rem;
+        border-radius: 2px;
+        &:after {
+            content: "\f00d";
+            margin-left: 6px;
+            color: #888;
+            font-family: "fontAwesome";
+            cursor: pointer;
         }
     }
 }
@@ -1231,6 +1256,7 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     &.active {
         color: $blue;
     }
+    
 }
 
 
@@ -1244,9 +1270,8 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 
 .fa-btn {
     cursor: pointer;
-    color: #777;
     cursor: pointer;
-    @include transition($btn-transition);
+    
 }
 
 .fa-btn:hover {
@@ -1261,8 +1286,30 @@ ul.inline-list {
     li {
         display: inline-block;
         margin-right: 20px;
+        height: 30px;
+        line-height: 30px;
+        .fa {
+            margin-right: .3rem;
+        }
     }
 }
+
+.inline-list {
+    display: flex;
+    align-items: center;
+    margin-top: .5rem;
+    .list-item {
+        margin-right: 20px;
+        .fa {
+            margin-right: .3rem;
+        }
+        &:last-of-type {
+            margin-right: 0px;
+        }
+    }
+}
+
+
 
 .dot {
     background-color: $gray-light;
@@ -1302,101 +1349,98 @@ ul.inline-list {
 
 //
 // Pretty Checkboxes 
-//
+// From here, with some modifications: https://www.templatemonster.com/blog/style-checkboxes-radio-buttons-css
 
-/* From here, with some modifications: https://www.templatemonster.com/blog/style-checkboxes-radio-buttons-css/ */
-
-.pretty-checkbox input[type="checkbox"]{
-  display: none;
-}
 
 .pretty-checkbox {
   margin-bottom: 10px;
   padding-left: 30px;
-}
-.pretty-checkbox label {
-  position: relative;
+  min-height: 20px;
+    * {
+        cursor: pointer;
+    }
+    label {
+        position: relative;
+        // Checkbox frame
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          margin: auto;
+          width: 20px;
+          height: 20px;
+          background-color: rgba(0,0,0,.15);
+          left: -30px;
+          transition: all .2s;
+          border-radius: 2px;
+          border: 3px solid transparent;  
+          display: inline-block;
+          display: inline-block;
+        }
+        &:hover::before {
+           background-color: rgba(0,0,0,.25);
+            cursor: pointer;
+        }
+        //Checkmark
+        &::after {
+          position: absolute;
+          margin: auto;
+          content: '\f00c';
+          font-family: 'FontAwesome';
+          font-weight: normal;
+          left: -26px;
+          top: 2px;
+          color: transparent;
+          transition: color .2s;
+          font-size: 13px; 
+        }
+    }
+    
+    input[type="checkbox"] {
+        display: none;
+        &:checked + label::before {
+            background-color: $green;
+            border-color: $green;
+        }
+        &:checked + label::after {
+            color: #fff;
+        }
+        &:indeterminate + label::before {
+            background-color: $blue;
+            border-color: $blue;
+        }
+        &:indeterminate + label::after {
+            content: '\f068';
+            color: #fff;
+            left: -25px;
+            top: 3px;
+        }
+    }
 }
 
-/* Base styles for spans */
-.pretty-checkbox span::before,
-.pretty-checkbox span::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-.pretty-checkbox span.checkbox::before {
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  left: -30px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  transition: border-color .2s;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.pretty-checkbox span.checkbox:hover::before {
-  border-color: $green;
-}
-.pretty-checkbox span.checkbox::after {
-  content: '\f00c';
-  font-family: 'FontAwesome';
-  font-weight: normal;
-  left: -26px;
-  top: 1px;
-  color: transparent;
-  transition: color .2s;
-  font-size: 13px;
-}
-
-.pretty-checkbox input[type="checkbox"]:checked + label span.checkbox::before {
-    background-color: $green;
-    border-color: $green;
-}
-.pretty-checkbox input[type="checkbox"]:checked + label span.checkbox::after {
-  color: #fff;
-}
 
 // Smaller
 .pretty-checkbox-sm {
     padding-left: 25px;
+    min-height: 16px;
+    label {
+        &::before {
+            width: 16px;
+            height: 16px;
+            left: -25px;
+            border-width: 2px;
+        }
+        &::after {
+            left: -22px;
+            top: 2px;
+            font-size: 10px;
+        }
+    }
 }
 
-.pretty-checkbox-sm span.checkbox::before {
-    width: 16px;
-    height: 16px;
-    left: -25px;
-    border-width: 2px;
-}
 
-.pretty-checkbox-sm span.checkbox::after {
-  left: -22px;
-  top: 3px;
-  font-size: 11px;
-}
 
-// XS
-.pretty-checkbox-xs {
-    padding-left: 25px;
-}
 
-.pretty-checkbox-xs span.checkbox::before {
-    width: 13px;
-    height: 13px;
-    left: -25px;
-    border-width: 1px;
-    border-color: #999;
-}
-
-.pretty-checkbox-xs span.checkbox::after {
-  left: -22px;
-  top: 2px;
-  font-size: 9px;
-}
 
 //
 // App switcher menu
