@@ -32,6 +32,9 @@ $brand-warning:             $yellow;
 $border-color-default:      #dadada;
 $border-color-light:        rgba(0, 0, 0, 0.05);
 
+// Hover bg color (Default hover color for filter items)
+$hover-bg-color-default:    rgba(0,0,0,.06);      
+
 // Body
 $body-bg:                   #efefef;
 $body-color:                #333;
@@ -89,7 +92,7 @@ $btn-warning-border:          $brand-warning;
 $dropdown-item-padding-x:     .9rem;
 $dropdown-link-active-bg:     #d8e8e8;
 $dropdown-link-active-color:  inherit;
-
+$dropdown-link-hover-bg:      $hover-bg-color-default;
 
 // Navs
 

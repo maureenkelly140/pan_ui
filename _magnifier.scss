@@ -11,7 +11,7 @@
 .magnifier-status, .fa.magnifier-status {
     font-size: 1.4rem;
     &.magnifier-status-sm {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     &.magnifier-status-confirmed {
         color: $red;
@@ -22,6 +22,16 @@
     &.magnifier-status-unverified {
         color: #888;
     }
+    &.magnifier-status-normal {
+        color: $green;
+    }
+    &.magnifier-status-resolved {
+        color: $blue;
+    }
+}
+
+.fa.magnifier-status-resolved {
+    font-size: 11px;
 }
 
 
@@ -89,9 +99,131 @@
 // HOST DETAIL PAGE
 //
 
+#org-unit {
+    //Force the OU string to ellipsize as needed
+    flex: 1 0 0;
+}
+
+#date-detected {
+    //Push "Date Detected" to the right
+    margin-left: auto;
+}
+
+
 #list-panel {
     width: 370px;
     &.collapsed {
         margin-left: -370px;
     }
 }
+
+#alert-list {
+    .content-col {
+        display: flex;
+        align-items: center;
+        .status-col {
+            flex-shrink: 0;
+            padding-right: 5px;
+        }
+        .item-icon-col {
+            padding-right: 7px;
+        }
+        .icon-col {
+            width: 35px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            text-align: right;
+            .fa {
+                visibility: hidden;
+            }
+            .fa.active {
+                visibility: visible;
+            }
+            
+        }
+        .name-col {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        &.subhead {
+            font-weight: bold;
+        }
+    }
+    .controls-col {
+        text-align: right;
+        width: 35px;
+        
+    }
+    .status-btn {
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 2px 4px;
+        &:hover {
+            border: 1px solid #dadada;
+        }
+        &.dropdown-toggle::after {
+            margin-left: 0px;
+        }
+    }
+    .status-col > .fa {
+        padding: 3px 18px 3px 5px; // When status icon isn't on a button, give it the same padding so it lines up 
+    }
+    .root-item {
+        .status-col {
+            width: 26px;
+            > .fa {
+                padding-left: 0px;
+            }
+        } 
+    }
+    .level-2 > .table-row {
+        padding-left: 54px;
+    }
+    .table-row:hover {
+        .icon-col .fa {
+            visibility: visible;
+        }
+    }
+    
+}
+
+
+#alert-list {
+    .fa-ellipsis-v {
+        color: rgba(0,0,0,.2);
+        padding-left: 10px;
+        margin-top: 2px;
+        margin-left: 4px;
+        &:hover {
+            color: rgba(0,0,0,.6);
+        }
+    }
+    .dropdown.show 
+    .fa-ellipsis-v {
+        color: $blue;
+    }
+}
+
+.action-menu {
+    right: -5px;
+}
+
+
+
+
+.dropdown-item {
+    position: relative;
+}
+.dropdown-item.selected::before {
+    content: "\f00c";
+    position: absolute;
+    font-family: "FontAwesome";
+    left: 3px;
+    line-height: 18px;
+    font-size: 11px;
+    color: #999;
+}
+
