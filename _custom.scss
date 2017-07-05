@@ -6,8 +6,7 @@
 
 
 // COLORS
-$blue:                      #0188c7;
-$blue:                      #0e9ac8;
+
 $green:                     #3db39e;
 $green:                     #3f9b6f;
 $red:                       #d9534f;
@@ -22,7 +21,7 @@ $gray-light:                #dadada; // Default hover color for filter items
 $gray-lighter:              #f2f2f2; // Card headers and footers
 $gray-lightest:             #f9f9f9; // Table headers
 
-$brand-primary:             $blue;
+
 $brand-success:             $green;
 $brand-danger:              $red;
 $brand-warning:             $yellow;
@@ -35,9 +34,6 @@ $border-color-light:        rgba(0, 0, 0, 0.05);
 // Hover bg color (Default hover color for filter items)
 $hover-bg-color-default:    rgba(0,0,0,.06);      
 
-// Body
-$body-bg:                   #efefef;
-$body-color:                #333;
 
 $text-muted:                #999;
 
@@ -59,12 +55,12 @@ $font-size-h2:              1.4rem;
 // COMPONENTS
 $border-radius:             0px;
 
-// Tables
+// TABLES
 $table-bg:                      #fff;
 $table-cell-padding:            .7rem;
-$table-sm-cell-padding:         .3rem;
+$table-sm-cell-padding:         .35rem;
 
-$table-bg-hover:                rgba($black,.075) !default;
+$table-bg-hover:                $hover-bg-color-default;
 $table-bg-active:               $table-bg-hover !default;
 
 $table-head-bg:                 $gray-lighter;
@@ -88,6 +84,10 @@ $btn-warning-bg:              $brand-warning;
 $btn-warning-border:          $brand-warning;
 
 
+$btn-secondary-bg:               #cfcfcf;
+$btn-secondary-border:           #cfcfcf;
+
+
 // Dropdowns
 $dropdown-item-padding-x:     .9rem;
 $dropdown-link-active-bg:     #d8e8e8;
@@ -98,8 +98,8 @@ $dropdown-link-hover-bg:      $hover-bg-color-default;
 
 $nav-tabs-border-width:                       0px;
 $nav-tabs-border-radius:                      0px;
-$nav-tabs-link-hover-border-color:            red;
-$nav-tabs-active-link-hover-color:            #00bf87;
+$nav-tabs-link-hover-border-color:            transparent;
+$nav-tabs-active-link-hover-color:            #333;
 $nav-tabs-active-link-hover-bg:               #fff;
 $nav-tabs-active-link-hover-border-color:     #ddd !default;
 $nav-tabs-justified-link-border-color:        #ddd !default;
@@ -119,8 +119,6 @@ $pagination-hover-color:               $link-hover-color !default;
 $pagination-hover-bg:                  $gray-lighter !default;
 $pagination-hover-border:              #ddd !default;
 
-$pagination-active-bg:                 $brand-primary;
-$pagination-active-border:             $brand-primary;
 
 
 // Cards
