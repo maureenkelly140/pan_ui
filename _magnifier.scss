@@ -2,14 +2,14 @@
 /* Scss Document */
 
 
-
-
 //
 // GLOBAL MAGNIFIER STYLES
 //
 
 .magnifier-status, .fa.magnifier-status {
     font-size: 1.4rem;
+    align-items: center;
+    align-content: center;
     &.magnifier-status-sm {
         font-size: 1.2rem;
     }
@@ -28,15 +28,29 @@
     &.magnifier-status-resolved {
         color: $blue;
     }
+    &.resolved::after {
+        content: "\f00c";
+        font-size: 11px;
+        color: $blue;
+        position: relative;
+        margin-left: 2px;
+        top: -3px;
+    }
 }
 
-.fa.magnifier-status-resolved {
-    font-size: 11px;
+// Status indiciator with drop-down. Used on the Host Detail/Alert Detail page
+.magnifier-status-btn {
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 2px 4px;
+    white-space: nowrap;
+    &:hover {
+        border: 1px solid #dadada;
+    }
+    &.dropdown-toggle::after {
+        margin-left: 0px;
+    }
 }
-
-
-
-
 
 
 //
@@ -73,11 +87,8 @@
             border: 1px solid $border-color-default;
             border-right: 0px;
         }
-    }
-    
+    }   
 }
-
-
 
 .alert-list div {
     margin-bottom: 4px;
@@ -90,26 +101,14 @@
     // Make the hover target a little bigger
     padding-left: 7px;
     padding-right: 7px;
-    
 }
-
 
 
 //
 // HOST DETAIL PAGE
 //
 
-#org-unit {
-    //Force the OU string to ellipsize as needed
-    flex: 1 0 0;
-}
-
-#date-detected {
-    //Push "Date Detected" to the right
-    margin-left: auto;
-}
-
-
+// List on left sidebar is wider than the default
 #list-panel {
     width: 370px;
     &.collapsed {
@@ -118,112 +117,20 @@
 }
 
 #alert-list {
-    .content-col {
-        display: flex;
-        align-items: center;
-        .status-col {
-            flex-shrink: 0;
-            padding-right: 5px;
+    .status-col {
+        flex-basis: 34px;
+        flex-shrink: 0;
+        > .fa {
+            margin: 3px 0px 0px 5px; // When status icon isn't on a button, give it the same padding so it lines up with the other icons
         }
-        .item-icon-col {
-            padding-right: 7px;
-        }
-        .icon-col {
-            width: 35px;
-            flex-shrink: 0;
-            flex-grow: 0;
-            text-align: right;
-            .fa {
-                visibility: hidden;
-            }
-            .fa.active {
-                visibility: visible;
-            }
-            
-        }
-        .name-col {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            flex-grow: 1;
-            flex-shrink: 1;
-        }
-        &.subhead {
-            font-weight: bold;
-        }
-    }
-    .controls-col {
-        text-align: right;
-        width: 35px;
-        
-    }
-    .status-btn {
-        background-color: transparent;
-        border: 1px solid transparent;
-        padding: 2px 4px;
-        &:hover {
-            border: 1px solid #dadada;
-        }
-        &.dropdown-toggle::after {
-            margin-left: 0px;
-        }
-    }
-    .status-col > .fa {
-        padding: 3px 18px 3px 5px; // When status icon isn't on a button, give it the same padding so it lines up 
-    }
-    .root-item {
-        .status-col {
-            width: 26px;
-            > .fa {
-                padding-left: 0px;
-            }
-        } 
-    }
-    .level-2 > .table-row {
-        padding-left: 54px;
-    }
-    .table-row:hover {
-        .icon-col .fa {
-            visibility: visible;
-        }
-    }
-    
+    }    
 }
 
-
-#alert-list {
-    .fa-ellipsis-v {
-        color: rgba(0,0,0,.2);
-        padding-left: 10px;
-        margin-top: 2px;
-        margin-left: 4px;
-        &:hover {
-            color: rgba(0,0,0,.6);
-        }
-    }
-    .dropdown.show 
-    .fa-ellipsis-v {
-        color: $blue;
-    }
+.timeline-container {
+    width: 400px;
 }
 
-.action-menu {
-    right: -5px;
+.magnifier-toolbar {
+    background-color: #f9f9f9;
+    padding: 10px 15px;
 }
-
-
-
-
-.dropdown-item {
-    position: relative;
-}
-.dropdown-item.selected::before {
-    content: "\f00c";
-    position: absolute;
-    font-family: "FontAwesome";
-    left: 3px;
-    line-height: 18px;
-    font-size: 11px;
-    color: #999;
-}
-

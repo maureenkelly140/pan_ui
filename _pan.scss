@@ -19,104 +19,104 @@ h1, h2, h3, h4, h5 {
 // Layout
 //
 
+.navbar-inverse {
+        .nav-link {
+            color: rgba(255, 255, 255, 0.6);
+            .fa {
+               color: rgba(255, 255, 255, 0.6); 
+            }
+            &:hover {
+                color: rgba(255, 255, 255, 1);
+                .fa {
+                    color: rgba(255, 255, 255, 1);
+                }
+            }
+        }    
+}
+
 #pan-nav {
     flex-direction: row;
-    flex-wrap: nowrap;
     align-items: center;
     background-color: #444;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
     height: 55px;
     padding: 0px;
     white-space: nowrap;
-    #nav-toggle {
-        color: #fff;
-        font-size: 24px;
+    .navbar-nav {
+        flex-direction: row;
+    }
+    .nav-link {
         height: 55px;
-        text-align: right;
+        line-height: 55px;
+        padding: 0px;
         cursor: pointer;
-        opacity: .8;
+    }
+    .dropdown-menu {
+        margin-top: 0px;
+        border-top: 0px;
+    }
+    #nav-toggle {
         width: 36px;
         margin-left: -36px;
+        text-align: right;
         visibility: hidden;
         transition: margin-left 100ms ease-in;
         flex-grow: 0;
         flex-shrink: 0;
         &:after {
             content: "\f0c9";
+            font-size: 24px;
             font-family: 'FontAwesome';
-            line-height: 55px;
         }
         &:hover {
-            opacity: 1;
+
         }
     }
     .navbar-brand {
         display: flex;
+        align-items: center;
         position: relative;
         height: 100%;
         padding: 0px 15px 0px 30px;
         margin-right: 30px;
-        display: flex;
-        align-items: center;
         background: url("../../../../images/logo-pan-bg-20.png") no-repeat;
         background-size: 60px;
         background-position: 8px 5px;
-        &:hover {
-            cursor: pointer;
-            .nav-dropdown-icon {
-                color: #fff;
-            }
+        cursor: pointer;
+        .app-logo {
+            height: 18px;
         }
-        #bg-logo {  
-            height: 41px; 
-            position: absolute;
-            top: 7px;
-            left: 10px;
-            z-index: 1;
-            opacity: .2;
-        }
-        .app-name {
-            margin-right: 9px;
-        }
-        .nav-dropdown-icon {
+        .dropdown-toggle::after {
+            content: "\f078";
+            font-family: "FontAwesome";
+            height: auto;
+            border: 0px;
             font-size: 13px;
-            color: rgba(255,255,255,.7);
+            margin-left: 9px;
+            color: rgba(255, 255, 255, 0.6); 
         }
-        &.dropdown-toggle::after {
-            display: none;
+        &:hover {
+            .dropdown-toggle::after {
+                color: rgba(255, 255, 255, 1); 
+            }
         }
         
     }
-    
-    .navbar-nav {
-        flex-direction: row;
-    }
-    #app-nav {
+    #nav-tabs {
+        flex-grow: 1;
         .nav-item {
             .nav-link {
-                height: 100%;
                 border-bottom: 6px solid transparent;
-                margin-right: 3px;
-                margin-left: 3px;
+                margin: 0px 3px;
                 padding: 0px 10px;
-                height: 55px;
-                line-height: 55px;
-                color: rgba(255, 255, 255, 0.6);
-                &:hover {
-                    color: #fff;
-                }
-
+                text-transform: uppercase;
+                font-size: .9rem;
             }
-            &.active {
-                .nav-link {
-                    color: #fff;
-                    border-color: $blue;
-                }  
+            &.active .nav-link {
+                border-color: $blue; 
             }
-            &.show {
-                .nav-link {
-                    color: #fff;
-                }
+            &.show .nav-link {
+                color: #fff;
             }
         }      
     }
@@ -126,24 +126,14 @@ h1, h2, h3, h4, h5 {
             font-size: 20px;
         }
         .nav-link {
-            padding-left: .5rem;
-            padding-right: .5rem;
-            &:hover {
-                color: #fff;
-                cursor: pointer;
-            }
+            padding: 0 6px;
         }
     }
     #nav-user {
-        padding: 0px 30px 0px 15px;
-        height: 55px;
+        margin: 0px 30px 0px 15px; 
         #pan-user-icon {
             display: none;
             font-size: 18px;
-        }
-        .nav-link {
-            line-height: 55px;
-            padding: 0px;
         }
         .pan-username + .badge {
             margin-left: 5px;
@@ -162,42 +152,10 @@ h1, h2, h3, h4, h5 {
                 position: relative;
                 top: 2px;
             }
-
         }
-    }
-    .dropdown-menu {
-        margin-top: 0px;
-        border-top: 0px;
-    }
-    
+    } 
 }
 
-
-// Styles for app nav items, whether it appears on top or in the slider
-.app-nav {
-    .nav-item {
-        .nav-link {
-            text-transform: uppercase;
-            font-size: .9rem;
-            font-weight: 400;
-            font-family: 'Lato', sans-serif;
-        }
-        &.active {
-            .nav-link {
-                
-            }  
-        }
-        &.show {
-            .nav-link {
-                
-            }
-        }
-    }      
-}
-
-.app-name {
-    height: 18px;
-}
 
 // Nav Menu Slider
 
@@ -210,12 +168,17 @@ h1, h2, h3, h4, h5 {
         border-bottom: 1px solid #ccc;
         padding: 0px 15px;
     }
+    .app-logo {
+        height: 18px;
+    }
     #nav-slider-menu {
         .list-item {
-            
         }
         
         a.nav-link {
+            text-transform: uppercase;
+            font-size: .9rem;
+            font-weight: 400;
             color: #666;
             padding: 15px 15px;
             border-bottom: 1px solid #f0f0f0;
@@ -242,7 +205,7 @@ h1, h2, h3, h4, h5 {
 
 
 @media screen and (max-width: 992px) {
-    #app-nav {
+    #nav-tabs {
         display: none;
     }
     #pan-username {
@@ -322,14 +285,18 @@ main {
 }
 
 .page-header {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 15px;
 }
 
 .page-body {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 15px;
 }
+
+.page-header + .page-body {
+    padding-top: 0px;
+}
+
+
 
 .sidebar.collapsible-sidebar {
     -webkit-transition: all 0.1s ease-in-out;
@@ -392,15 +359,22 @@ main {
 // Tabs
 //
 
+
+
+
 .nav-tabs {
-    background-color: $gray-lightest;
     .nav-link {
         color: #646464;
         padding: 1em 1.3em;
         cursor: pointer;
         @include transition($btn-transition);
+        border-top: 4px solid transparent;
         .fa {
             margin-right: $icon-spacer;
+        }
+        &.active {
+            border-color: transparent;
+            color: green;
         }
     }
     .nav-link:hover {
@@ -410,6 +384,8 @@ main {
         }
     }
 }
+
+
 
 //
 // Tables
@@ -455,6 +431,10 @@ main {
     &.table-nowrap td {
         white-space: nowrap;
     }
+    &.table-striped td {
+        border-top: 0px;
+        border-bottom: 0px;
+    }
 }
 
 .table-sm {
@@ -466,7 +446,7 @@ main {
     }
 }
 
-.table td.checkbox-col, .table th.checkbox-col {
+.table td.checkbox-col, .table th.checkbox-col, td.col-sm, th.col-sm {
     width: 10px;
 }
 
@@ -484,42 +464,41 @@ main {
 
 
 .flex-table {
-    .table-row, .table-head-row {
+    .flex-row, .table-head-row {
         padding: 10px 15px;
-        border-bottom: 1px solid $table-border-color;
         display: flex;
-        justify-content: flex-start;
+        align-items: center;
         background-color: #fff;
+        border-bottom: 1px solid $table-border-color;
+        flex-grow: 0;
         &.active {
             background-color: $bg-highlight;
         }
-        .toggle-col {
-            width: 24px;
-            flex-grow: 0;
-            flex-shrink: 0;
-        }
-        .check-col {
-            width: 25px;
-            flex-grow: 0;
-            flex-shrink: 0;
-        }
-        .content-col {
-            flex-grow: 1;
-        }
-        .controls-col {
-            margin-left: auto;
-        }
-        &.nowrap {
-            align-items: center;
-            .content-col {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: inline-block; 
+        .flex-col {
+            display: inline-block;
+            margin-right: .8rem; // Same as filter-col
+            &:last-of-type {
+                margin-right: 0px;
             }
         }
-        &.row-expanded {
-            border: 3px solid red;
+        .toggle-col {
+            flex-basis: 18px;
+            flex-grow: 0;
+            min-width: 18px;
+        }
+        .main-col {
+            flex-grow: 1;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        &:hover {
+            .show-on-hover {
+                visibility: visible;
+            }  
+        }
+        @include hover {
+          background-color: $table-bg-hover;
         }
     }
     .table-head-row {
@@ -536,19 +515,19 @@ main {
     }
     
     // Hierarchical flex table. Not sure my markup here is as solid as it could be.
-    .level-2 > .table-row {
+    .level-2 > .flex-row {
         padding-left: calc(#{$list-indent} * 2)
     }
-    .level-3 > .table-row {
+    .level-3 > .flex-row {
         padding-left: calc(#{$list-indent} * 3);
     }
-    .level-4 > .table-row {
+    .level-4 > .flex-row {
         padding-left: calc(#{$list-indent} * 4);
     }
-    .level-5 > .table-row {
+    .level-5 > .flex-row {
         padding-left: calc(#{$list-indent} * 5);
     }
-    .level-6 > .table-row {
+    .level-6 > .flex-row {
         padding-left: calc(#{$list-indent} * 6);
     }
     
@@ -623,6 +602,22 @@ main {
     }
 }
 
+// Description List
+
+dl {
+    margin-bottom: 0px;
+    dt {
+        font-weight: 400;
+        text-transform: uppercase;
+        color: $text-muted;
+        margin-bottom: 1rem;
+    }
+    dd {
+        margin-bottom: 1rem;
+    }
+}
+
+
 //
 // Buttons
 //
@@ -635,28 +630,6 @@ main {
     @include transition($btn-transition);
 }
 
-.btn-primary {
-    background-color: $brand-primary;
-    border-color: $brand-primary;
-    &:hover {   
-        background-color: darken($brand-primary, 15%);
-        border-color: darken($brand-primary, 15%);
-    }
-}
-
-.btn-secondary {
-    background-color: #cfcfcf;
-    border-color: #cfcfcf;
-    &:hover {
-        background-color: #a1a1a1;
-        border-color: #a1a1a1;
-        color: #fff;
-        .fa {
-            color: #fff;
-        }
-    }
-}
-
 .btn-outline {
     background-color: transparent;
     border-color: #a1a1a1;
@@ -666,11 +639,11 @@ main {
     }
 }
 
-.fa.show-on-hover, .btn.show-on-hover {
+.fa.show-on-hover, .btn.show-on-hover, .show-on-hover {
     visibility: hidden;
 }
 
-tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-header:hover .fa.show-on-hover, .card-header:hover .btn.show-on-hover {
+tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-header:hover .fa.show-on-hover, .card-header:hover .btn.show-on-hover, tr:hover .show-on-hover, .card-header:hover .show-on-hover {
     visibility: visible;
 }
 
@@ -678,37 +651,66 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     vertical-align: middle;
 }
 
+
+
+
+
 //
 // Dropdowns 
 //
+
+.dropdown-menu {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
 
 .dropdown-item {
     display: flex;
     align-items: center;
     padding-top: .6rem;
     padding-bottom: .6rem;
+    .check-col {
+        width: 18px;
+        margin-left: -4px;
+    }
     .icon-col {
-        width: 32px;
+        width: 28px;
         text-align: center;
         margin-left: -4px;
-        color: #555;
+        .fa {
+            color: #555;
+        }
     }
     .badge {
         margin-left: 20px;
     }
+    &.selected {
+        .check-col::before {
+             content: "\f00c";
+            font-family: "FontAwesome";
+            font-size: 11px;
+            line-height: 1.3rem;
+            color: #777;
+        }
+    }
 }
 
-.dropdown-toggle::after {
-    border-top-color: $body-color;
+a.dropdown-toggle::after {
+    border-top-color: $body-color; // On links, make the dropdown caret text-colored rather than link-colored
 }
+
+
+
 
 .dropdown-header {
     color: $blue;
     font-weight: 600;
 }
 
-.dropdown.show .fa-btn {
-    color: $blue;
+.fa-btn.dropdown-toggle::after {
+    display: none; // Suppress the caret for an icon that opens a menu
+}
+.dropdown.show .fa-btn, .btn-group.show .fa-btn {
+
 }
 
 .dropdown.no-caret .dropdown-toggle:after {
@@ -729,7 +731,11 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     }
 }
 
-.card-block+.card-block {
+.card-body {
+    padding: 15px;
+}
+
+.card-body+.card-body {
     border-top: 1px solid $border-color-default;
 }
 
@@ -761,6 +767,37 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     }
 }
 
+.card-title {
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: $green;
+}
+
+// When the card header has tabs...
+
+.card-header, .card-header-lightweight, card-header-sm {
+    &.tab-header {
+        padding: 0px;
+        background-color: $gray-lightest;
+        border-bottom: 0px;
+        .card-controls {
+            padding: $card-spacer-y $card-spacer-x;
+        }
+    }
+    &.card-header-lightweight {
+        .nav-tabs .nav-link {
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+    }
+}
+
+
+
+
+
 .card-header-sm {
     padding-top: .7rem;
     padding-bottom: .7rem;
@@ -773,8 +810,7 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 
 .card-header-lightweight {
     background-color: transparent;
-    padding: 1.25rem 1.25rem 0 1.25rem;
-    padding-bottom: 0px;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
     border-bottom: 0px;
     color: #888;
     h1, h2, h3, h4, h5 {
@@ -782,7 +818,12 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
         text-transform: uppercase;
         font-size: 1.1rem;
     }
+    +.card-body {
+        padding-top: 0px;
+    }
 }
+
+
 
 .card-full-height {
     margin-bottom: 0px;
@@ -945,8 +986,6 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     }
     .page-header-utilities {
         margin-left: auto;
-        order: 10;
-        align-self: flex-end;
     }
     .page-header-icon {
         font-size: 24px;
@@ -976,6 +1015,7 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     .supporting-info {
         color: #888;
         flex-basis: 100%;
+        line-height: 1.3rem;
     }
     .back-btn img {
         opacity: .5;
@@ -1078,7 +1118,10 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     }
     .filter-col {
         display: inline-block;
-        margin-right: .8rem;
+        margin-right: .8rem; // Same as flex-col
+        &:last-of-type {
+            margin-right: 0px;
+        }
     }
     .main-col {
         flex-grow: 1;
@@ -1259,6 +1302,81 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
     
 }
 
+// Icon List
+
+.icon-row {
+    display: flex;
+    algin-items: center;
+    .icon-col {
+        margin-left: .6rem;
+    }
+}
+
+
+// Action icons
+
+.action-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    position: relative;
+    cursor: pointer;
+    margin-top: -3px; // Gets it to align with text, but may not be useful in other contexts
+    &.dropdown-toggle::after {
+        display: none; // Suppress caret
+    }
+    .fa {
+        color: #888;
+        z-index: 2;
+        font-size: 14px;
+    }
+    &:hover {
+        .fa {
+            color: #555;
+        }
+    }
+    &.selected .fa {
+        color: $blue;
+    }
+    &.selected-red .fa {
+        color: $red;
+    }
+    &.selected-green .fa {
+        color: $green;
+    }
+    + .dropdown-menu {
+        margin-top: 10px;
+        margin-left: -7px;
+    }
+    + .dropdown-menu-right {
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-right: -7px;
+    }
+}
+
+//When dropdown is open (icon is active), highlight and show in blue
+.show > .action-icon, .action-icon.active {
+    &::before {
+        border-radius: 50%;
+        top: -6px;
+        left: -6px;
+        margin: auto;
+        padding: 4px;
+        position: absolute;
+        content: ' ';
+        height: 27px;
+        width: 27px;
+        z-index: 1;
+        background-color: #dadada;
+        transition: all .2s;
+    }
+    .fa, &:hover .fa {
+        color: $blue;
+    }
+}
 
 
 
@@ -1267,6 +1385,10 @@ tr:hover > td > .fa.show-on-hover, tr:hover > td > .btn.show-on-hover, .card-hea
 //
 // Miscellaneous
 //
+
+.border-top {
+    border-top: 1px solid $border-color-default;
+}
 
 .fa-btn {
     cursor: pointer;
@@ -1300,11 +1422,15 @@ ul.inline-list {
     margin-top: .5rem;
     .list-item {
         margin-right: 20px;
+        flex-shrink: 0;
         .fa {
             margin-right: .3rem;
         }
         &:last-of-type {
             margin-right: 0px;
+        }
+        &.ellipsize {
+            flex-shrink: 1;
         }
     }
 }
@@ -1333,6 +1459,10 @@ ul.inline-list {
     padding: 0px !important;
 }
 
+.no-border {
+    border: 0px !important;
+}
+
 .ellipsize {
   white-space: nowrap;
   overflow: hidden;
@@ -1340,12 +1470,37 @@ ul.inline-list {
   display: inline-block; 
 }
 
+.text-truncate {
+    display: inline-block; 
+}
 
 
 
 //
 // EXPERIMENTAL STUFF
 //
+
+
+//
+// Bar 
+//
+
+
+.bar, .bar-sm {
+    background-color: rgba(0,0,0,.1);
+    height: 11px; 
+    border-radius: 11px;
+    display: inline-block;
+    width: 100%;
+    &.bar-primary {
+        background-color: $brand-primary;
+    }
+}
+
+.bar-sm {
+    height: 6px;
+    border-radius: 6px;
+}
 
 //
 // Pretty Checkboxes 
@@ -1457,7 +1612,7 @@ ul.inline-list {
         padding: 10px 20px 0px 20px;
         font-weight: 600;
     }
-    .app-area {
+    #app-switcher-body {
         padding: 10px 20px 20px 20px;
     }
     .app-block {
