@@ -360,7 +360,9 @@ main {
 //
 
 
-
+.tabs-bg {
+    background-color: $gray-lightest;
+}
 
 .nav-tabs {
     .nav-link {
@@ -369,12 +371,14 @@ main {
         cursor: pointer;
         @include transition($btn-transition);
         border-top: 4px solid transparent;
+        font-weight: 600;
+        color: #777;
         .fa {
             margin-right: $icon-spacer;
         }
         &.active {
-            border-color: transparent;
-            color: green;
+            border-color: $blue;
+            color: #555;
         }
     }
     .nav-link:hover {
@@ -435,6 +439,9 @@ main {
         border-top: 0px;
         border-bottom: 0px;
     }
+    &.align-middle td {
+        vertical-align: middle;
+    }
 }
 
 .table-sm {
@@ -444,6 +451,11 @@ main {
         padding-top: .3rem;
         padding-bottom: .3rem;
     }
+}
+
+.row-title {
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .table td.checkbox-col, .table th.checkbox-col, td.col-sm, th.col-sm {
@@ -774,26 +786,6 @@ a.dropdown-toggle::after {
     color: $green;
 }
 
-// When the card header has tabs...
-
-.card-header, .card-header-lightweight, card-header-sm {
-    &.tab-header {
-        padding: 0px;
-        background-color: $gray-lightest;
-        border-bottom: 0px;
-        .card-controls {
-            padding: $card-spacer-y $card-spacer-x;
-        }
-    }
-    &.card-header-lightweight {
-        .nav-tabs .nav-link {
-            font-weight: 400;
-            text-transform: uppercase;
-            font-size: 1rem;
-        }
-    }
-}
-
 
 
 
@@ -825,10 +817,10 @@ a.dropdown-toggle::after {
 
 
 
-.card-full-height {
+.card.full-height {
     margin-bottom: 0px;
     height: 100%;
-    min-height: calc(100vh - 144px); // 144 is the nav bar + page header + offset. I'm sure this isn't the best way to do this. Maybe Flexbox or a grid layout would let us do something more flexible?
+    min-height: calc(100vh - 154px); // 144 is the nav bar + page header + offset. I'm sure this isn't the best way to do this. Maybe Flexbox or a grid layout would let us do something more flexible?
 }
 
 .card-footer-btn {
@@ -1184,6 +1176,34 @@ a.dropdown-toggle::after {
     margin-bottom: 0px;
 }
 
+.form-condensed {
+    .form-group {
+        margin-bottom: 6px;
+    }
+    .col-form-label {
+        padding-bottom: 0px;
+    }
+}
+
+.search-box {
+    position: relative;
+    &:after {
+        content: "\f002";
+        font-family: "FontAwesome";
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        z-index: 1000000;
+        color: #ccc;
+        cursor: pointer;
+    }
+    input {
+        padding-right: 30px;
+    }
+    
+}
+
+
 //
 // Modals 
 //
@@ -1211,16 +1231,35 @@ a.dropdown-toggle::after {
 
 .modal-header {
     border-bottom: 0px;
-    .modal-title {
-        font-size: 2rem;
+    justify-content: flex-start;
+    padding: 20px 15px;
+    h1, h2, h3, h4, h5 {
+        font-size: 1.8rem;
         font-weight: 400;
         color: #666;
         font-family: $font-family-sans-serif;
+        margin-bottom: 0px;
     }
-    .close img {
-        width: 18px;
+    .close {
+        margin-left: auto;
+        img {
+            width: 18px;
+        }
+    }
+    .subhead-inline {
+        color: $text-muted;
+        font-size: 1.2rem;
+        display: inline-block;
+        margin-left: 12px;
+        padding-left: 12px;
+        border-left: 1px solid $border-color-default;
+        line-height: 1.3rem;
     }
 }
+
+
+
+
 
 // Lets modal content scroll if needed, while keeping header and footer on screen
 .modal-wrap {
