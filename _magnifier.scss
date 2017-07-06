@@ -134,3 +134,50 @@
     background-color: #f9f9f9;
     padding: 10px 15px;
 }
+
+// Whitelist Modal
+
+#modal-whitelist {
+    .modal-dialog {
+        width: 700px;
+        max-width: 700px;
+    }
+    .modal-body {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+.input-ip-address {
+    display: flex;
+    align-items: flex-start;
+    input:first-of-type {
+        flex-grow: 1;
+    }
+    span {
+        flex-grow: 0;
+        margin-left: 6px;
+        margin-right: 6px;
+        color: #999;
+        font-size: 22px;
+        font-weight: 300;
+    }
+    input:last-of-type {
+        flex-grow: 0;
+        width: 40px;
+    }
+}
+
+#whitelist-form {
+    label {
+        font-weight: 600;
+    }
+    .row-off label {
+        color: #999;
+        font-weight: 400;
+    }
+    .row-off .col-8 {
+        opacity: .6;
+    }
+}
+
