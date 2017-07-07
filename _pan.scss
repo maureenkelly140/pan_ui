@@ -390,6 +390,23 @@ main {
 }
 
 
+// Nav pill style. Not sure if this should be the overall style or just on card headers.
+.nav-pills {
+    margin-left: -4px;
+    a.nav-link {
+        border-radius: 30px;
+        color: $gray;
+        margin-right: 2px;
+        &.active, &.active:hover {
+            background-color: #d8e8e8;
+            color: #333;
+        }
+        &:hover {
+            background-color: $gray-lighter;
+        }
+    }
+}
+
 
 //
 // Tables
@@ -775,6 +792,13 @@ a.dropdown-toggle::after {
         order: 2;
         .fa {
             margin-left: 8px;
+        }
+    }
+    &.multi-row {
+        flex-direction: column;
+        align-items: flex-start;
+        .flex-row {
+            width: 100%;
         }
     }
 }
@@ -1176,6 +1200,10 @@ a.dropdown-toggle::after {
     margin-bottom: 0px;
 }
 
+.form-group label {
+    font-weight: 600;
+}
+
 .form-condensed {
     .form-group {
         margin-bottom: 6px;
@@ -1201,6 +1229,14 @@ a.dropdown-toggle::after {
         padding-right: 30px;
     }
     
+}
+
+.has-danger .form-control {
+    box-shadow: 0px 0px 0px 3px #fbeded;
+}
+
+.form-control-feedback {
+    margin-top: .4rem;
 }
 
 
@@ -1512,6 +1548,14 @@ ul.inline-list {
 .text-truncate {
     display: inline-block; 
 }
+
+break{
+  flex-basis: 100%;
+  width: 0px; 
+  height: 0px; 
+  overflow: hidden;
+}
+
 
 
 
