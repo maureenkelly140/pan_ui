@@ -253,6 +253,9 @@ main {
     &.filter-panel {
         padding: 15px;
     }
+    &.sidebar-nav {
+        background-color: #ccc;
+    }
     .sidebar-header-block {
         padding: 15px;
         border-bottom: 1px solid $border-color-default;
@@ -462,7 +465,7 @@ main {
 }
 
 .table-sm {
-    font-size: .8rem;
+    font-size: .85rem;
     th, thead th {
         font-size: .7rem;
         padding-top: .3rem;
@@ -1196,17 +1199,25 @@ a.dropdown-toggle::after {
 // Forms 
 //
 
-.form-group:last-of-type {
+.form-group:last-of-type, .form-condensed .form-group:last-of-type {
     margin-bottom: 0px;
 }
+
 
 .form-group label {
     font-weight: 600;
 }
 
+.form-label-optional::after {
+    content: "(Optional)";
+    color: #888;
+    margin-left: 5px;
+    font-weight: 400;
+}
+
 .form-condensed {
     .form-group {
-        margin-bottom: 6px;
+        margin-bottom: .6rem;
     }
     .col-form-label {
         padding-bottom: 0px;
@@ -1238,6 +1249,38 @@ a.dropdown-toggle::after {
 .form-control-feedback {
     margin-top: .4rem;
 }
+
+.form-check-input:only-child {
+    position: absolute;
+}
+
+
+.col-form-label {
+    flex-basis: 25%;
+    flex-grow: 0;
+    text-align: right;
+    label {
+        font-weight: 600;
+    }
+}
+.col-form-input {
+  flex-grow: 1;
+}
+.col-form-error {
+  flex-basis: 20px;
+  flex-grow: 0;
+  padding-left: 0px;
+  padding-top: 5px;
+  min-width: 35px;
+  .fa.error-icon {
+      color: #d9534f;
+      display: none;
+      font-size: 20px;
+      line-height: 20px;
+  }
+}
+
+
 
 
 //
@@ -1307,12 +1350,17 @@ a.dropdown-toggle::after {
     padding-bottom: calc(#{$modal-inner-padding}*2);
 }
 
+.modal-body.more-padding {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .modal-body + .modal-body {
     border-top: 1px solid $border-color-default;
 }
 
 .modal-footer {
-  justify-content: flex-start; 
+  justify-content: flex-end; 
   padding: $modal-inner-padding;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
   background-color: #f1f0f0;
@@ -1327,9 +1375,7 @@ a.dropdown-toggle::after {
 
 @include media-breakpoint-up(lg) {
     .modal-xl {
-        max-width: 100%;
-        margin-left: 30px;
-        margin-right: 30px;
+        max-width: 1000px;
     }
 }
 
@@ -1549,12 +1595,6 @@ ul.inline-list {
     display: inline-block; 
 }
 
-break{
-  flex-basis: 100%;
-  width: 0px; 
-  height: 0px; 
-  overflow: hidden;
-}
 
 
 
@@ -1591,7 +1631,6 @@ break{
 
 
 .pretty-checkbox {
-  margin-bottom: 10px;
   padding-left: 30px;
   min-height: 20px;
     * {
