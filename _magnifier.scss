@@ -137,16 +137,6 @@
 
 // Whitelist Modal
 
-#modal-whitelist {
-    .modal-dialog {
-        width: 700px;
-        max-width: 700px;
-    }
-    .modal-body {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-}
 
 .input-ip-address {
     display: flex;
@@ -178,6 +168,9 @@
     }
     .row-off .col-8 {
         opacity: .6;
+    }
+    .col-form-label {
+        text-align: left;
     }
 }
 
